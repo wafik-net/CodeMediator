@@ -1,7 +1,7 @@
 <?php 
 /*
  *---------------------------------------------------------------
- * MVC Database
+ * CodeMediator -  Database
  *---------------------------------------------------------------
  *
  * Do Not Edit Or Remove Anything From This File 
