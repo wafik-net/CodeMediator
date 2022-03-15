@@ -1,7 +1,7 @@
 <?php  
 /*
  *---------------------------------------------------------------
- * MVC Router
+ * CodeMediator - Router
  *---------------------------------------------------------------
  *
  * Do Not Edit Or Remove Anything From This File 
