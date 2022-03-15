@@ -1,0 +1,44 @@
+
+@font-face{
+	src:url("../font/cairo.ttf");
+	font-family: cairo; 
+}
+
+html,*{
+	margin: 0px;
+	padding: 0px;
+	font-size: clamp(16px, calc(2/80*100vw), 18px);
+}
+p{
+	margin: 0!important;
+}
+body{
+	color: #333;
+	background-color: #f2f3f4!important;
+	font-family: cairo,sans-serif;
+}
+
+a:hover{
+	text-decoration: none;
+	color: #359fdb!important;
+	transition: .3s;
+}
+
+.contact-btn{
+	width: 100%;
+	text-align: center;
+	margin-top: 1rem
+}
+.contact-btn a{
+	background-color: #43b548;
+    color: #fff!important;
+    padding: 0.4rem 0.6rem;
+    border-radius: 5px;
+    border-bottom: 3px solid #3c8d3f;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+.contact-btn a:hover{
+	color: #fff!important;
+	background-color: #3ba941;
+}

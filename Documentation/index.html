@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv='Content-Language' content="all-language">
+    <!-- @bootstrap -->
+    <link rel="stylesheet" href="assets/lib/bootstrap/bootstrap.min.css">
+    <!-- @fontawesome -->
+    <link rel="stylesheet" href="assets/lib/fontawesome/all.css">
+    <!-- @stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/lib/highlighter/monakai.css">
+    <script src="assets/lib/jquery/jquery.min.js"></script>
+    <script src="assets/lib/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="assets/lib/bootstrap/bootstrap.js"></script>
+    <script src="assets/assets/js/main.js"></script>
+	<script src="assets/lib/highlighter/highlight.min.js"></script>
+	<title>Documentation</title>
+</head>
+<body>
+	<header class="header">
+		<h3 class="brand">Documentation</h3>
+		<span class="cr">by <a href="http://fb.com/rochdi.wafik" target="_blank">rochdi wafik</a></span>
+	</header>
+	<div class="wrapper">
+		<!-- sidebar -->
+		<aside class="sidebar">
+			<div class="list">
+				<a href="#introduction">مقدمة عامة</a>
+				<a href="#structure">تصميم الاطار</a>
+				<a href="#working">مبدأ العمل</a>
+				<a href="#instalation">طريقة التثبيت</a>
+				<a href="#get-started">بدأ العمل</a>
+				<a href="#rules">قواعد هامة</a>
+				<a href="#constants"> الثوابت الجاهزة</a>
+				<a href="#database"> قاعدة البيانات</a>
+				<a href="#functions"> الدوال الجاهزة</a>
+				<a href="#classes"> الكلاسات والإضافات</a>
+				<a href="#security"> الحماية</a>
+				<a href="#conclusion"> خاتمة</a>
+			</div>
+		</aside>
+		<!-- main -->
+		<main class="main">
+			<div class="container-fluid">
+				<!-- section -->
+				<section class="section" id="introduction">
+					<h3 class="title">مقدمة</h3>
+					<p>مرحبا بك في هذه الوثيقة التي سنشرح لك من خلالها كيف تستعمل كودميدياتور بتفصيل</p>
+					<p><b>كودميدياتور</b> هو اطار عمل لتطبيقات الويب مبني على لغة php , يساعدك على بناء تطبيقات ويب قوية واحترافية, يوفر لك هذا الاطار العديد من الاضافات والكلاسات الجاهزة التي ستسهل عليك العمل بشكل كبير, اهتم انت بفكرة موقعك ودع الباقي علينا :) </p>
+					<p><b>كودميدياتور</b> سهل الاستخدام وقوي في نفس الوقت, كما ان حجمه لا يتعدى تقريبا 2MB, اما من حيث الحماية فان الاطار يحتوي على تقنيات مدمجة للحماية من هجمات الويب ك xss - csrf - sql injuction - session hijacking - etc</p>
+				</section>
+				<!-- section -->
+				<section class="section" id="structure">
+					<h3 class="title">التصميم</h3>
+					<p><b><i class="fa fa-folder"></i> Root Folder:</b> هو المجلد الرئيسي الذي يضم جميع ملفات المشروع</p>
+					<p><space class='space'/> <b><i class="fa fa-folder"></i> assets:</b> يحتوي على كل ما يتعلق بالواجهة الامامية كالجافاسكربت والسي-اس-اس والمكتبات</p>
+					<p><space class='space'/> <b><i class="fa fa-folder"></i> uploads:</b> يحتوي على الملفات المرفوعة كالصور والمقاطع والصوتيات</p>
+					<p><space class='space'/> <b><i class="fa fa-folder"></i> application:</b> يحتوي على المجلدات الاساسية للمشروع, ويضم المجلدات التالية:</p>
+					<p><space class='space'/><space class='space'/> <b><i class="fa fa-folder"></i> core:</b> يحتوي على جميع ملفات الاطار, وهو القلب النابض للنظام, تحذير: لا تقم بحذف أو تعديل اي شيء في هذا المجلد</p>
+					<p><space class='space'/><space class='space'/> <b><i class="fa fa-folder"></i> config:</b> يحتوي على جميع اعدادات المشروع كاعدادات الاتصال والتوجيهات الخاصة وغيرها</p>
+					<p><space class='space'/><space class='space'/> <b><i class="fa fa-folder"></i> model:</b> هو المسؤول عن ادارة البيانات</p>
+					<p><space class='space'/><space class='space'/> <b><i class="fa fa-folder"></i> view:</b> هو المسؤول عن عرض البيانات للمستخدم</p>
+					<p><space class='space'/><space class='space'/> <b><i class="fa fa-folder"></i> controller:</b> هو الوسيط بين الview والmodel , يستقبل الطلبات ويرسل البيانات</p>
+					<p><space class='space'/><space class='space'/> <b><i class="fa fa-folder"></i> session:</b> يحتوي على جلسات السيرفر, يمكنك التحكم في هذا المجلد من الاعدادات كتغيير اسمه او مساره او غيره</p>
+					<p><space class='space'/><space class='space'/> <b><i class="fa fa-folder"></i> helper:</b> هنا يمكنك وضع الاضافات والكلاسات المساعدة, يحتوي افتراضيا على بعض الكلاسات الجاهزة</p>
+					<p><space class='space'/> <b><i class="fa fa-file"></i> index:</b> من خلاله يتم التشغيل النهائي للمشروع</p>
+					<p><space class='space'/> <b><i class="fa fa-file"></i> .htaccess:</b> يحتوي على أوامر خاصة بالنظام, تحذير: لاتقم بحذف أو تعديل هذا الملف</p>
+				</section>
+				<!-- section -->
+				<section class="section" id="working">
+					<h3 class="title">كيف يعمل الإطار؟</h3>
+					<p>يعتمد كودميدياتور على نمط <a>MVC</a> والذي يعني Model View controller, في السابق اعتاد المطورون على اعتماد البنية التقليدية في تنظيم, حيث عنذ طلب صفحة يتم نقل الزائر الى عنوان تلك الصفحة بالضبط, بالتالي يظهر مسار الصفحة الحقيقي في الرابط, وهذا الامر له سلبيات عديدة, فتخيل مثلا ان الصفحة المراد الوصول اليها موجودة في مسار طويل, بالتالي سيكون رابط الصفحة طويل جدا, كما انك تعطي للمخترق فكرة عن مسارات مجلدات موقعك. كما ان العناوين الطويلة ليست محببة لدى محركات البحث. المشكل الاخر الذي جاء هذا النمط ليحله هو الquery string, حيث ان الطلبات من نوع GET تجعل الروابط غير نظيفة, وغير صديقة للسيو seo</p>
+				    <p>الصورة التالية تبين آلية عمل MVC</p>
+					<div style="max-width: 800px;">
+						<img class="img-fluid" src="assets/img/mvc-map.jpg" alt="how mvc works">
+					</div>
+					<li>عندما يطلب الزائر صفحة معينة ولنفترض <a>http://site.com/blog</a> يقوم الموجه Router بتحليل الطلب ويبحث في مجلد controller عن المتحكم المسؤؤل عن معالجة blog ويقوم بتشغيله</li>
+				    <li>يقوم المتحكم بارسال طلب للنموذج Model من اجل تزويده بالبيانات اللازمة</li>
+				    <li>يقوم الModel بجلب البيانات من قاعدة البيانات وإرجاعها للمتحكم</li>
+				    <li>بعد استلام البيانات يقوم المتحكم بارسالها لView </li>
+				    <li>تعمل الView على تنسيق البيانات بالشكل المناسب وعرضها للزائر على شكل html</li>
+				    <br/>
+					<p>ان لهاذا النمط ايجابيات كثيرة جدا, فقد اصبح يعتمد في اغلب المشاريع البرجية الحديثة, ليس فقط في تطبيقات الويب وانما في معظم التطبيقات الاخرى سواء في برامج الكمبيوتر او في تطبيقات الهواتف او غيرها, واذا كنت ستعمل بهذا النمط لأول مرة فسترى مدى أهميته</p>
+				</section>
+				<!-- section -->
+				<section class="section" id="instalation">
+					<h3 class="title">طريقة التثبيت</h3>
+					<p>مرحبا بك في هذه الوثيقة التي سنشرح لك من خلالها كيف تستعمل كودميدياتور بتفصيل</p>
+					<p>طريقة التثبيت جد بسيطة, كل ما عليك فعله هو اتباع الخطوات التالية:</p>
+					<li>ادخل الى المسار التالي <a>/application/config/database.php</a> ثم قم بإعداد معلومات الاتصال بقاعدة البيانات الخاصة بك</li>
+					<div class="code">
+						<pre>
+							<code data-language="php">/*
+								 *---------------------------------------------------------------
+								 * Database Connection
+								 *---------------------------------------------------------------
+								 *
+								 * Do Not Edit Or Remove Any Key, You Can Edit Only The Values
+								 *
+								 */
+								
+								$database['hostname'] = 'اسم المظيف';     
+								$database['username'] = 'اسم المستخدم';   
+								$database['password'] = 'كلمة المرور'; 
+								$database['database'] = 'قاعدة البيانات'; 
+							</code>
+						</pre>
+					</div>
+					<li>قم بالدخول إلى الملف <a>application/config/app.php</a> ثم قم بكتابة عنوان موقعك كما في الكود التالي</li>
+				    <div class="code">
+						<pre>
+							<code data-language="php"># Application Base URL 
+								$config['base_url'] = 'example.com';</code>
+						</pre>
+					</div>
+					بشكل افتراضي اذا كانت القيمة خالية يقوم الاطار اليا بتخمين عنوان موقعك, لكن يستحسن كتابة العنوان بنفسك. <b>وانتهينا :)</b>
+				    <p>باقي الاعدادات يمكنك تخصيصها حينما تحتاج لذلك,يوجد فوق كل اعداد تعليق يشرح دوره</p>
+				</section>
+				<!-- section -->
+				<section class="section"id="get-started">
+					<h3 class="title">بدأ العمل على المشروع</h3>
+					<p>إذا لم تشتغل مسبقا بنمط الmvc فلا تقلق, ستتعلم خطوة بخطوة كيف تنجر العمل :) لبدأ العمل عليك أولا معرفة كيف يعمل نظام التوجيه <a>Router</a></p>
+					<h5 class="highlight-yellow">كيف يعمل نظام التوجيه؟</h5>
+				    <li>عندما يطلب المستخدم صفحة ما على رابط معين ولنفترض: <a>http://site.com/blog/post/title-of-post </a><br>
+						يقوم الموجه بتقطيع الرابط الى ثلاث اجزاء رئيسية بعدما يزيل اسم الموقع: فيصبح الرابط على الشكل التالي: <a>blog</a> | <a>post</a> | <a>title-of-post</a><br>
+						يعتبر الجزء الأول <a>blog</a> اسم الكنترولر <a>blogController</a><br>
+						ويعتبر الجزء الثاني <a>post</a> اسم الميثود الموجودة بداخل الكنترولر <br>
+						ويعتبر ما تبقى من الرابط <a>title-of-post</a> بارامتر(ات) يتم تمريرها للدالة الموجودة بداخل الكنترولر <br>
+						كل كنترولر يجب ان يحتوي افتراضيا على دالة اسمها <a>()default</a> بحيث يتم تنفيدها تلقائيا اذا لم يتم طلب اي دالة, مثال: <a>http://site.com/blog</a>
+					</li>
+					<li>هذه تعتبر الطريقة الافتراضية التي يقوم من خلالها الموجه اوتوماتيكيا باستدعاء الكنترولر والدالة المناسبين استنادا الى عملية تقسيم الرابط</li>
+				    <li> إلا أنه يمكنك استعمال توجيهات خاصة بك والتحكم في العملية من خلال ملف routes الموجود على المسار <a>application/config/routes.php</a></li>
+				    <div class="code">
+						 <pre>
+							 <code data-language="php">
+								/*
+								 *---------------------------------------------------------------
+								 * Custom Routes
+								 *---------------------------------------------------------------
+								 *
+								 * Re-map requests and target specific controllers
+								 *
+								 */
+								
+								$route['blog'] = 'testController';
+							 </code>
+						 </pre>
+					</div>
+					<li>في الكود أعلاه قمنا بتوجيه الطلب <a>site.com/blog</a> الى الكنترولر testController بدل ان يتم توجيهه افتراضيا الى blogController</li>
+				    <h5 class="highlight-yellow">انشاء وعرض أول صفحة</h5>
+					<p>افتراضيا عند فتح الإطار ستجد صفحة ترحبية مسبقا, لكن لننشء صفحة نسميها AboutUs</p>
+				    <li>قم بالذهاب الى مجلد الكنترولرز application/acontrollers وأنشئ واحدا جديدا بنفس اسم الصفحة المطلوبة</li>
+				    <div class="code">
+						<pre>
+							<code data-language="php">
+								class aboutUsController extends Controller{
+
+										function default()
+										{
+											echo "hello user, this is about us page :)";
+										}
+								
+								}
+							</code>
+						</pre>
+					</div>
+				<li>قم بالدخول الى الرابط <a>site.com/AboutUs</a> ومبرك عليك :) قمت بطباعة اول جملة لك <br> حتى الان اعتمدنا على الكنترولر فقط من اجل العرض, لكن عملية العرض تتم على مستوى الview أساسا</li>
+				<li>قم بالدخول الى مجلد العرض application/views وأنشئ واحدة جديدة باسم about.php مثلا, ثم اكتب فيها ما تريد عرضه</li>
+				<div class="code">
+					<pre>
+						<code data-language="html">
+							<main>
+								<h2>Welcome To About Us</h2>
+								<p>Hello user, this is about us page</p>
+							</main>
+						</code>
+					</pre>
+				</div>
+	            <li>الان عد الى الكنترولر وقم بعرض الصفحة من خلال الدالة ()view</li>
+				<div class="code">
+					<pre>
+						<code data-language="php">
+							class aboutUsController extends Controller{
+
+									function default()
+									{
+										$this->view("about"); // no need to put .php
+									}
+							
+							}
+						</code>
+					</pre>
+				</div>
+				<p> اعد تشغيل الصفحة, ومبروك عليك</p>
+                <h5 class="highlight-yellow">جلب البيانات من الModel</h5>
+				<p>في هذا المثال ستتعرف على طريقة جلب البيانات من المودل, في العادة المودل يتعامل مع بيانات الdatabase. لكن لست مجبرا على استعمال قواعد البيانات. يمكنك جلب البيانات من اي مصدر</p>
+			    <p>سنتعرف على طريقة تمرير بياتات json من الmodel الى الcontroller ولاحقا سنطبق الطريقة على قاعدة البيانات mysql</p>
+			    <li>قم بالدخول الى مجلد المودلز وانشئ واحدا جديدا <a>application/models</a></li>
+			    <div class="code">
+					<pre>
+						<code data-language="php">
+							class aboutUsModel extends Model{
+
+								public static function getData()
+								{
+							
+									return "Hello user, this is about us page";
+								}
+							
+							}							
+						</code>
+					</pre>
+				</div>
+				<li>الآن سنجلب البيانات من الmodel ونمررها للview</li>
+				<li>لتمرير البيانات من الكنترولر للview نستعمل الخاصية []data</li>
+				<div class="code">
+					<pre>
+						<code data-language="php">
+							class aboutUsController extends Controller{
+
+								function default()
+								{
+							        $this->data['content'] = aboutUsModel::getData();
+									$this->view("about");
+								}
+							
+							}							
+						</code>
+					</pre>
+				</div>
+				<li>لنستقبل البيانات ونعضها بطريقتنا في view</li>
+				<div class="code">
+					<pre>
+						<code data-language="php">
+							<main>
+								<div style='background:#f8f8f8'>
+									<p style="color: #333;">&lt;?= $content ?&gt;</p>
+								</div>
+							</main>							
+						</code>
+					</pre>
+				</div>
+				</section>
+				<!-- section -->
+				<section class="section" id="rules">
+					<h3 class="title">قواعد هامة</h3>
+				
+					<li>يجب تسمية كل كلاس بنفس اسم الملف, سواء في الcontroller أو في الmodel</li>
+					<li>كل كنترولر يجب أن يرث من كنترولر أب اسمه Controller, وكل مودل يجب أن يرث من مودل أب اسمه Model </li>
+					مثال: <code>blogController extends Controller</code> | <code>blogModel extends Model</code>
+					<li>الغرض من ذلك هو أن يستعمل الكلاس الدوال والخواص الموجودة في الكلاس الأب, فمثلا دالة العرص ()view هي في الاصل موروثة من الكلاس الأب</li>
+					<li>يمكن تعريف الدوال في الmodel بطريقة ثابتة <code>static</code> او بالطريقة العادية</li>
+					<li>جميع الدوال الموجودة في الmodel الأب هي دوال ثابتة <code>static</code> وسنتعرف عليها وعلى طريقة استعمالها في الامثلة القادمة</li>
+					<li>لتمرير البيانات من الcontroller إلى الview نستعمل الخاصية <code>data[]</code> في الkey نضع اسم معين وفي الvalue نضع البيانات المراد تمريرها</li>
+					<li>لاستقبال البيانات في الview نستعمل اسم الkey الذي أعطيناه ل <code>data</code></li>
+					<li>يمكن تمرير البيانات في الخاصية data بجميع الاشكال, مثلا يمكن تمرير object أو array واستقبالها في الview عن طريق <code>foreach</code></code></li>
+					<li><span class="note">هام:</span> لابد من تمرير البيانات قبل عرض الview مثال:</li>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								// Like This
+								$this->data['name'] = 'content...';
+								$this->view('page');  
+								// Not Like This  !!
+								$this->view('page');             
+								$this->data['name'] = 'content...';
+							</code>
+						</pre>
+					</div>
+				</section>
+				<!-- section -->
+				<section class="section" id="constants">
+					<h3 class="title">الثوابت الجاهزة</h3>
+					<p>هي ثوابت مدمجة في الإطار تسهل عليك الوصول لبعص الخواص </p>
+					<li><a>DS</a> يرجع علامة الانتقال بين المسارات (سلاش), إذا كان النظام <code>unix</code> يرجع <a>/</a> أما إذا كان <code>windows</code> يرجع <a>\</a></li>
+					<li><a>BASE</a> يرجع مسار المجلد الرئيسي Root</li>
+					<li><a>APP</a> يرجع مسار المجلد Application</li>
+					<li><a>CONFIG</a> يرجع مسار المجلد Config</li>
+					<li><a>HELPER</a> يرجع مسار المجلد Helper</li>
+					<li><a>MODELS</a> يرجع مسار المجلد Models</li>
+					<li><a>VIEWS</a> يرجع مسار المجلد Views</li>
+					<li><a>CONT</a> يرجع مسار المجلد Controllers</li>
+					<li><a>ASSETS</a> يرجع مسار المجلد Assets</li>
+					<li><a>UPLOADS</a> يرجع مسار المجلد Uploads</li>
+				</section>
+				<!-- section -->
+				<section class="section" id="database">
+					<h3 class="title">التعامل مع قاعدة البيانات</h3>
+					<p>يوفر الmodel الأب مجموعة من الدوال التي ستحتاجها للتعامل مع قاعدة البيانات, جميع هذه الدوال من نوع <code>static</code> بحيث يمكنك استدعاءها مباشرة, لكن تأكد أولا ان معلومات الاتصال بقاعدة البيانات application/config/database.php قد تم اعداده</p>
+					<!--/-->
+					<li><a>()sql</a> تمكنك من كتابة أوامر <code>sql</code> خاصة بك</li>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								function sql(string); # return  objects OR false;
+								sql("SELECT * FROM users WHERE status != 0 "); // example: Get all active users
+							</code>
+						</pre>
+					</div>
+					<li><a>()get_all</a> جلب جميع العناصر من الجدول . مكان <code>cond</code> (اختياري) نضع فيه اوامر شرطية</li>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								function get_all(table, cond[] = null); # return  objects OR false;
+								get_all('users'); // example 1
+								get_all('users', ['status' => 'active']); // example 2
+							</code>
+						</pre>
+					</div>
+					<!--/-->
+					<li><a>()get_where</a> ترجع عنصر محدد. <code>cond</code> نضع امر الشرط</li>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								function get_where(table, cond[]); # return  object OR false;
+								get_where('users', ['name' => 'khaled']); // example
+							</code>
+						</pre>
+					</div>
+					<!--/-->
+					<li><a>()insert</a> ادخال عنصر أو عناصر الى الجدول. مكان <code>data</code> نضع العناصر المراد ادخالها</li>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								function insert(table, data[]); # return  true OR false;
+								$data = ['name' => 'ahmed', 'job' => 'programmer', 'age' => 25]; // example
+								insert('users', $data); 
+							</code>
+						</pre>
+					</div>
+					<!--/-->
+					<li><a>()delete</a> حذف عنصر محدد من الجدول. مكان <code>cond</code> نعبر عن العنصر شرطيا</li>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								function delete(table, cond[]); # return  true OR false;
+								delete('users', ['name' = 'sam']);  // example
+							</code>
+						</pre>
+					</div>
+					<!--/-->
+					<li><a>()dalete_all</a> حذف جميع العناصر من الجدول, كن حذرا عند استعمال هذه الدالة لان العناصر لن تتمكن من استعادتها</li>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								function dalete_all(table); # return  true OR false;
+								dalete_all('articles');  // example
+							</code>
+						</pre>
+					</div>
+					<!--/-->
+					<li><a>()update</a> تحديث عنصر محدد. مكان <code>data</code> نضع البيانات الجديدة . ومكان <code>where</code> نعبر عن العنصر شرطيا</li>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								function update(table, data[], where[]); # return  true OR false;
+								$newData = ['note'=>15 ,'level'=>3]; // example
+								update('students', $newData, ['id'=>278]);  
+							</code>
+						</pre>
+					</div>
+					<!--/-->
+					<li><a>()update_all</a> تحديث جميع العناصر. مكان <code>data</code> نضع العناصر الجديدة</li>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								function update_all(table, data[]); # return  true OR false;
+								update_all('users',['status'=>'active']);  //example
+							</code>
+						</pre>
+					</div>
+					<!--/-->
+					<li><a>()update_all_exept</a> تحديث جميع العناصر الا عنصر معين. مكان <code>cond</code> نضع العنصر المستثنى</li>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								function update_all_except(table, data[], cond[]); # return  true OR false;
+								update_all('users',['status'=>'active'], ['id'=>1]);  //example
+							</code>
+						</pre>
+					</div>
+					<!--/-->
+					<li><a>()exist</a> التحقق مما اذا كان العنصر موجود ام لا. مكان <code>data</code> نضع العنصر </li>
+					<p>عادة تستعمل هذه الدالة في عملية signup للتحقق مما اذا كان اسم المستخدم مثلا محجوز لشخص اخر ام لا</p>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								function exist(table, data[]); # return  true OR false;
+								exist('users',['username' => 'yusuf01']);  // check if username available
+							</code>
+						</pre>
+					</div>
+					<!--/-->
+					<li><a>()auth</a> التحقق من مطابقة العناصر لبعضها. مكان <code>data</code> نضع العناصر. مكان <code>method</code> نضع AND او OR </li>
+					<p>عادة تستعمل هذه الدالة في عملية الlogin للتحقق مما اذا كانت القيم المدخلة مطابقة للقيم المخزنة في قاعدة البيانات. افتراضيا تكون قيمة method هي AND</p>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								function auth(table, data[], method = 'AND'); # return  true OR false;
+								$check = [
+								    'username' => $_POST['username'],
+									'password' => $_POST['password']
+								];
+								auth('users',$check);  // check authentication
+							</code>
+						</pre>
+					</div>
+					<!--/-->
+					<li><a>()like</a> التحقق من وجود عناصر مشابهة. مكان <code>data</code> نضع عنصر البحث </li>
+					<p>عادة تستعمل هذه الدالة في عملية البحث للتحقق من وجود عناصر مشابهة</p>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								function like(table, data[]); # return  object OR false;
+								exist('articles',['title' => $_POST['search']]);  // check results
+							</code>
+						</pre>
+					</div>
+					<!--/-->
+					<li><a>()count_rows</a> حساب عدد الأعمدة الموجودة بالجدول</li>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								function count_rows(table); # return  object OR false;
+								exist('users');  // get number of users
+							</code>
+						</pre>
+					</div>
+					<!--/-->
+					<li><a>()count_cols</a>احساب عدد الخلايا. مكان <code>colum</code> نكتب اسم الخلية</li>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								function count_cols(table, colum); # return  object OR false;
+								exist('blog', 'views');  // get blog views
+							</code>
+						</pre>
+					</div>
+					<h5 class="highlight-yellow">اقتناص الأخطاء</h5>
+					<li>في حالة تعذر اكمال العملية, يوفر لك الModel دالة <a>()getMessage</a> لعرض سبب الخطأ</li>
+					<li>يمكنك استدعاء الدالة بشكل <code>static</code> كما هو مبين في المثال القادم</li>
+					<p><b style="color:rgb(241, 18, 47)">ملاحظة: </b> يجب استعمال الدالة في مرحلة التطوير فقط, فأنت بالتأكيد لا تريد عرض أخطاء قاعدة البيانات للزوار</p>
+					<li>في المثال التالي نريد جلب المقالات من جدول <code>posts</code> ولنفترض أننا كتبنا اسم الجدول بشكل خاطئ ك: <code>postts</code></li>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								class postModel extends Model
+								{
+									public static function getPosts()
+									{
+										if(Model::get_all('postts')):
+											return Model::get_all('postts');
+										else:
+											die( Model::getMessage() );
+										endif;
+									}
+								}
+							</code>
+						</pre>
+					</div>
+					<b>النتيجة ستكون: <code>Table 'db.potts' doesn't exists</code></b>
+					
+				</section>
+
+				<!-- section -->
+				<section class="section" id="functions">
+					<h3 class="title">الدوال الجاهزة</h3>
+					<p>هي دوال تأتي مع الإطار تسهل عليك العمل, في كل اصدار يتم إدخال دوال جديدة للframework</p>
+					<h5>دوال عامة</h5>
+					<li><a>()base_url</a>ترجع عنوان الموقع</li>
+					<li><a>()page_url</a>ترجع عنوان الصفحة الحالية</li>
+					<li><a>(location)redirect</a>تعيد توجيه الصفحة, اذا لم تستقبل بارامتر تقوم بتحديث الصفحة</li>
+					<li><a>(str)parse_date</a>تقوم بتحويل الوقت من string الى time</li>
+					<li><a>(name,value)cookie</a>تقوم بإنشاء ملف تعريف ارتباط ينتهي بعد شهر</li>
+					<li><a>(str)upper</a>تقوم بتكبير كامل النص</li>
+					<li><a>(str)lower</a>تقوم بتصغير كامل النص</li>
+					<li><a>(str, index = null)capitalize</a>تقوم بتكبير الحرف حسب الindex, ان لم تضع الindex تقوم افتراضيا بتكبير أول حرف </li>
+					<li><a>(sub = null)assets</a>ترجع مجلد الassets</li>
+					<li><a>(sub = null)uploads</a>ترجع مجلد uploads</li>
+					<li><a>()page404</a>ترجع صفحة خطأ 404</li>
+					<li><a>(arr)arr_null</a>ترجع true إذا كانت المصفوفة فارغة</li>
+					<li><a>(arr,int)arr_less</a>ترجع true إذا كانت أحد قيم المصفوفة أصغر من العدد int</li>
+					<li><a>(arr,int)arr_len</a>ترجع true إذا كانت أحد قيم المصفوفة أكبر من العدد int</li>
+					<li><a>()post_method</a>ترجع true إذا كان نوع الطلب عبارة عن Post</li>
+					<li><a>()get_method</a>ترجع true إذا كان نوع الطلب عبارة عن Get</li>
+					<li><a>(text, type)show_msg</a>ترجع رسالة منصقة, مكان <code>type</code> نحدد ثابت يعتبر عن نوع الرسالة: <code>error|success|warning|danger</code></li>
+					<h5>دوال الـتحقق</h5>
+					<li><a>(arg)is_email</a>ترجع true ان كان البارمتر عبارة عن عنوان بريد إالكتروني</li>
+					<li><a>(arg)is_int</a>ترجع true ان كان البارمتر عبارة عن عدد صحيح إالكتروني</li>
+					<li><a>(arg)is_ip</a>ترجع true ان كان البارمتر عبارة عن عنوان آي بي</li>
+					<li><a>(arg)is_Url</a>ترجع true ان كان البارمتر عبارة عن عنوان url</li>
+					<h5>دوال الفلترة</h5>
+					<li><a>(arg)html_encode</a>تشفر وسوم html حتى لا يقوم المتصفح بترجمتها</li>
+					<li><a>(arg)html_decode</a>تفك تشفير وسوم html المشفرة</li>
+					<li><a>(arg)filter_html</a>تزيل وسوم html تماما</li>
+					<li><a>(arg)filter_str</a>تزيل أي وسم من النص</li>
+					<li><a>(arg)filter_url</a>تزيل أي علامة غير مرغوب فيها</li>
+					<li><a>(arg)filter_quotes</a>تزيل علامات التنصيص </li>
+					<h5>دوال أمنية</h5>
+					<li><a>()getUserIp</a> ترجع عنوان الآي بي الخاص بالزائر </li>
+					<li><a>(arg)getUserAgent</a>ترجع عنوان العميل (المتصفح) </li>
+					<li><a>()prevent_sess_hijacking@</a> تمنع ثغرة سرقة الجلسات, الدالة مفعلة افتراضيا من ملف الإعدادات </li>
+					<li><a>()clear_sess_dir</a>تقوم بتنظيف مجلد الجلسات </li>
+					<li><a>()csrf</a>تولد token لمنع ثغرة csrf (سيتم شرح طريقة عملها ) </li>
+					<li><a>()csrf_validation</a> تتحقق من مطابقة token الخاص بcsrf (سيتم شرح طريقة عملها ) </li>
+				</section> 
+				<!-- section -->
+				<section class="section" id="classes">
+					<h3 class="title">الكلاسات والإضافات</h3>
+					جميع الكلاسات والإضافات تجدها في المسار <code>application/helper</code> يمكنك اضافة كلاسات خاصة بك في المجلد Helper. لكن يجب أن تسمي الكلاس بنفس اسم الملف حتى يتم التعرف عليه وتحميله تلقائيا من طرف ال<code>autoloader</code>
+					<li><a>FileUploader</a>باستعمال هذا الكلاس تستطيع رفع الملفات بسهولة والتحكم فيها, كالتحكم في انواع الملفات المسموح بها أو أقصى حجم مسموح به, كما أن الكلاس يحميك من الملفات الخبيثة والغير آمنة</li>
+					<li>المثال التالي يبين طريقة رفع صورة من form إلى المجلد uploads</li>
+					<b style="text-align: left;width:100%;float: left;"><code>view</code></b>
+				    <div class="code">
+						<pre>
+							<code data-language="html">
+								<form method="POST" enctype="multipart/form-data">
+									<input type="file" name="avatar">
+									<button name="upload">upload</button>
+								</form>
+							</code>
+						</pre>
+					</div>
+					<b style="text-align: left;width:100%;float: left;"><code>controller</code></b>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								class testController extends Controller{
+									function default()
+									{
+										if(post_method()):
+											$upload = new FileUploader(); // Make new object
+											$upload->where(UPLOADS.DS); // Set folder where to upload
+											$upload->allow('png','jpg','jpeg');  // Set allowed types (optional)
+											$upload->setMaxSize(2); // set 2MB as max size (optional)
+											if($upload->upload('avatar')):
+												echo "image uploaded";
+											else:
+												echo $upload->getMessage();
+												$upload->unset();
+											endif;
+										endif;
+									}
+								}
+							</code>
+						</pre>
+					</div>
+					<li><a>ConfigWriter</a> يساعدك هذا الكلاس في كتابة وتحديث قيم المصفوفات (array) داخل ملف (.php) </li>
+					<p>إذا كنت تنوي تخزين إعدادات معينة في ملف معين على شكل مصفوفة وتحديثها برمجيا,أو تحديث قيم مصفوفة داخل ملف, فهذا هو الكلاس المناسب لك </p>
+
+					<b style="text-align: left;width: 100%;float: left;"><code>بنية الكلاس</code></b>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								class ConfigWriter{
+									function __construct($config_file, $array_variable_name);
+									function write($key, $replacement);
+									function save(); // save changes in file
+									function hasError(); // catch errors
+								}
+							</code>
+						</pre>
+					</div>
+					<p>مثال عن تخزين إعدادات السيرفر</p>
+					<b style="text-align: left;width: 100%;float: left;"><code>database.php (before)</code></b>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								// Server Connection Settings
+								$config['hostname'] = null;
+								$config['username'] = null;
+								$config['password'] = null;
+
+							</code>
+						</pre>
+					</div>
+					<b style="text-align: left;width: 100%;float: left;"><code>install.php</code></b>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								// Update database.php Settings
+
+								$update = new ConfigWriter("database.php", "config");
+								$update->write("hostname","localhost");
+								$update->write("username","admin");
+								$update->write("username","root");
+								$update->save();
+
+							</code>
+						</pre>
+					</div>
+					<b style="text-align: left;width: 100%;float: left;"><code>database.php (after)</code></b>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								// Server Connection Settings
+								$config['hostname'] = 'localhost';
+								$config['username'] = 'admin';
+								$config['password'] = 'root';
+
+							</code>
+						</pre>
+					</div>
+					<li><a>Pagination</a> يساعدك هذا الكلاس في تقسيم العناصر الكثيرة الى صفحات مرقمة, مثلا إن كنت تريد عمل صفحة لعرص المقالات, ليس جيدا أم تعرض جميع المقالات في صفحة واحدة, تخيل أن عندك 200  مقالة,لايعقل أن تعرضها دفعة واحدة لأنها ستبطء من تحميل الصفحة ويصبح طول صفحة الموقع طويلة جدا. لذا سيساعدك هذا الكلاس على تجزيء العناصر الى صفحات مرقمة</li>
+				    <li>المثال التالي يبين طريقة جلب المنشورات مقسمة الى صفحات مرقمة</li>
+					<b style="text-align: left;width:100%;float: left;"><code>Model</code></b>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								class postModel extends Model{
+									public static function getPosts(){
+										$pagination = new Pagination('posts');
+										$pagination->limit(5);  // Max posts in each page 
+										$pagination->sql("WHERE status != 0"); // (optional) Additional command
+										$pagination->maxList(10); // (optional) Max list (default=15)
+										$pagination->orderBy('id','DESC'); // (optional) Desc = From Last To First | ESC = From First To Last(defsult = desc)
+										return [
+											'posts' =>  $pagination->fetch(), // Get Posts
+											'menu' => $pagination->getMenu() // Get Menu (1,2,3,4,..,next)
+										];
+
+										// Catch Errors (optional)
+										$pagination->getMessage();
+												
+									}
+							</code>
+						</pre>
+					</div>
+					<b style="text-align: left;width:100%;float: left;"><code>Controller</code></b>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								class postController extends Controller{
+									public function default(){
+										$this->data['posts'] = postModel::getPosts()['posts'];	
+										$this->data['menu'] = postModel::getPosts()['menu'];	
+										$this->view('blog';)	
+									}
+							</code>
+						</pre>
+					</div>
+					<b style="text-align: left;width:100%;float: left;"><code>view</code></b>
+					<div class="code">
+						<pre>
+							<code data-language="java">
+								<main>
+									&lt;?php foreach($posts as $post): ?>
+									    <article>
+											<h1>&lt;?= $post->title?></h1>
+											<p>&lt;?= $post->content ?></p>
+										</article>
+										&lt;?php endforeach; ?>
+
+									<div class="navbar-menu">&lt;?= $menu ?></div>
+								</main>
+							</code>
+						</pre>
+					</div>
+					<p>نتيجة الmenu ستكون على الشكل التالي باستخدام البوتستراب, يمكنك التحكم في شكلها بالcss </p>
+					<ul class="pagination" style="direction: ltr!important;float:right;">
+						<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+						<li class="page-item"><a class="page-link" href="#">1</a></li>
+						<li class="page-item"><a class="page-link" href="#">2</a></li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item active"><a class="page-link" href="#">Next</a></li>
+					  </ul>
+				</section>
+				<!-- section -->
+				<section class="section" id="security">
+					<h3 class="title">الحماية</h3>
+					<p>افتراضيا يأتي الإطار CodeMediator بدوال وكلاسات وتقنيات مدمجة لتأمين مشروعك بدون تدخل منك, لكن توجد بعض الدوال التي تحتاج أن تستدعيها بنفسك عند الحاجة اليها</p>
+				    <h5 class="highlight-yellow">الحماية من csrf</h5>
+					<p>الcsrf هي ثغرة يستعملها المقرصنون من خلال سرقة الform وإعادة استعملها في سيرفر اخر, قد يقوم المخترق مثلا بأخد الform الخاصة بمربع البحث ويعمل loop عليها لإرسال عدد كبير من الطلبات في كل ثانية, الأمر الذي قد يستهلك موارد السيرفر الذي تستظيف عليه موقك ويؤدي لسقوطه, والثغرة تستعمل بشمل واسع في هجمات الحرمان من الخدمة <code>DDos Attack</code></p>
+					<li>للحماية من هذه الثغرة يوفر لك CodeMediator دالتين:</li>
+					<li>الأولى: <a>()csrf()</a> يجب أن تستدعى داخل ال<code>form</code> حيث تقوم الدالة بتوليد token جديد عند كل عملية طلب للصفحة</li>
+				    <li>الثانية: <a>()csrf_validation</a> ويجب أن تستدعى داخل الدالة المسؤولة عن تلقي البيانات من الform قبل كل شيء. حيث تقوم الدالة بالتحقق من الtoken لمرسل مع البيانات, ومن خلاله تتعرف الدالة عن ما إذا كانت البيانات آتية من داخل الموقع أو من خارجه, ترجع الدالة <code>false</code> إذا كان التحقق غير متطابق</li>
+					<li>في المثال التالي سنوم باستقبال بيانات مرسلة من form ونتحقق مما إذا كانت قادمة من نفس موقعنا أم موقع اخر</li>
+				    <b style="text-align: left;width:100%;float: left;"><code>view</code></b>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+								<form method="post">
+									&lt;?php echo csrf(); ?&gt;
+									<input type="search" name="title" placeholder="search here ..">
+									<button name="submit">search</button>
+								</form>
+							</code>
+						</pre>
+					</div>
+					<b style="text-align: left;width:100%;float: left;"><code>controller</code></b>
+					<div class="code">
+						<pre>
+							<code data-language="php">
+                                function default(){
+									if(post_method()){
+										if(csrf_validation() == false):
+											echo "Invalide form token!";
+											return false;
+										else:
+											// do what you want ...
+										endif;
+									endif;
+								}
+							</code>
+						</pre>
+					</div>
+					<h5 class="highlight-yellow">الحماية من Session Hijacking</h5>
+					<p>الSession Hijacking أو سرقة الجلسات من أخطر الثغرات التي يستغلها المخترقون للوصول إلى معلومات المستخدمين, حيث عندما يصل المخترق الى متصفح الضحي بطريقة ما (غالبا باستعمال xss) يقوم باستخراج رمز الSession-Id ويعيد استعماله في متصفحه الخاص, بذلك يحصل على جميع صلاحيات الدخول الى الصفحات المرتبطة بتلك الجلسة</p>
+				    <p>لنفترض أن المستخدم العادي دخل الى موقع تواصل اجتماعي غير محمي من الثغرة, عندما يقوم بتسجيل الدخول الى حسابها يقوم الموقع بتخزين رمز الsession الخاصة بالمستخدم في متصفحه على شكل cookie. حتى إذا قام المستخدم بالخروج من الموقع والدخول اليه لاحقا, يتعرف الموقع عليه من خلال رمز الجلسة وينقله الى حسابه عوض مطالبته بتسجيل الدخول</p>
+					<p>لكن عندما يحصل المخترق على رمز الجلسة من متصفح الضحية, يقوم باستعماله في متصفحه, وعندما يزور الموقع سيقوم الموقع بالتحقق من الرمز, ويحوله الى حساب الضحية بدون تسجيل الدخول !</p>
+				    <li>يأتي CodeMediator بدالة جاهزة للحماية من هذه الثغرة, معرفة بإسم <a>()prevent_sess_hijacking</a>, الدالة مشغلة افتراضيا, ويمكنك التحكم في تشغيلها أو إيقافها من ملف <code>application/config.app.php</code></li>
+				    <div class="code">
+						<pre>
+							<code data-language="php">
+								# Prevent Session Hijacking !!
+								$config['prev-sess-hi'] = true;
+							</code>
+						</pre>
+					</div>
+				</section>
+				<!-- section -->
+				<section class="section" id="conclusion">
+					<h3 class="title">خاتمة</h3>
+					<p>كانت هذه وثيقة تعريفية بأهم أساسيات إطار العمل CodeMediator الاصدار الأول لعام 2021 , وسيتم إصدار نسح أخرى بإضافات وتحسينات جديدة , يمكنك دائما التواصل مع مطور الإطار سواء عبر الفايسيوك <a href="http://fb.com/rochdi.wafik">@rochdi.wafik</a> أو عبر البريد الإلكتروني <a href="mailto:rochdiouafiq@gmail.com">rochdiouafiq@gmail.com</a> سواء للاستفسار عن مشكلة أو لاقتراح اضافات جديدة</p>
+					<p>إن <a>CodeMediator</a> هو إطار عمل مجاني مفتوح المصدر, ويحتفظ المطور بجميع الحقوق القانونية في حالة استعمال الإطار خارج بنود وشروط الاستعمال</p>
+				    <h5 class="final-title">ماذا تنتظر؟! ابدأ ببناء تطبيقك الآن :)</h5>
+				</section>
+				
+			</div><!--/wrapper-->
+		</main> 
+	</div>
+</body>
+</html>

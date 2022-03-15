@@ -1,0 +1,32 @@
+
+html,*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	outline: none;
+	text-decoration-style: none;
+	scroll-behavior: smooth;
+
+}
+body{
+	margin: 0px;
+	padding: 0px;
+	color: #333;
+	background-color: #eaeaef!important;
+	font-family: sans-serif;
+}
+form{
+	padding: 1rem;
+}
+form button{
+	margin: 0 1rem;
+}
+.form-box{
+	max-width: 800px;
+	margin: 1rem auto;
+	padding: 1rem;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0px 1px 4px 0px #5151514f;
+	color: #555;
+}
