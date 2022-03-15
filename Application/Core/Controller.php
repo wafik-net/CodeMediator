@@ -1,7 +1,7 @@
 <?php 
 /*
  *---------------------------------------------------------------
- * MVC Controller
+ * CodeMediator -  Controller
  *---------------------------------------------------------------
  *
  * Do Not Edit Or Remove Anything From This File 
