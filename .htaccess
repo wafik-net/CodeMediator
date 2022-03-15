@@ -1,0 +1,12 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# redirect all request to index
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+# prevent directory listing
+Options -indexes
+# print custom error
+ErrorDocument 403 /
