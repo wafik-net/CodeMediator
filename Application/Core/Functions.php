@@ -2,7 +2,7 @@
 
 /*
  *---------------------------------------------------------------
- * MVC Functions
+ * CodeMediator - Functions
  *---------------------------------------------------------------
  *
  * Do Not Edit Or Remove Anything From This File 
