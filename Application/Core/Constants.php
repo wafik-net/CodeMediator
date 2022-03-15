@@ -2,7 +2,7 @@
 
 /*
  *-------------------------------------------------------------------
- * MVC Constants
+ * CodeMediator -  Constants
  *-------------------------------------------------------------------
  *
  * Do Not Edit Or Remove Anything From This File 
