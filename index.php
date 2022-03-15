@@ -2,14 +2,14 @@
 
 /* 
  *---------------------------------------------------------------
- * MSE MVC - A PHP Web Framework Based On MVC
+ * CodeMediator - A PHP Web Framework Based On MVC
  *---------------------------------------------------------------
  *
  * This Is The Index Of The Project
  * Do Not Edit Or Remove Any Code In This page
  *
  * Make Sure To Setup The Server Connection First
- * The Setup File In: application/config/app.php
+ * The Setup Go To : application/config/database.php
  *
  * Version 1.0
  *
