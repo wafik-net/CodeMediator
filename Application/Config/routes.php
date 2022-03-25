@@ -5,14 +5,13 @@
  *---------------------------------------------------------------
  *
  * This File Let You Make Your Own Routes
- * By Re-map Requests To A Specific Controllers
+ * By Re-map Requests To A Specific Controllers Action And Args
  *
- * Until This Version, You can route Only The Controllers
- * The Full Routing Will Be Available In The Comming Versions
- *
- * Syntex: $route['page'] = 'pageController';
+ * examples: 
+ *     $route['blog'] = 'pageController';
+ *     $route['blog/user'] = 'blogController/admin'; 
+ *     
+ *     !Read the documentaion to learn more about routing system    
+ *     
  *
  */
-
-
-$route['test'] = 'indexController';
