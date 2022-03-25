@@ -25,7 +25,7 @@ html,*{
 }
 p{
 	margin: 0!important;
-	font-size: 15px;
+	text-align: right;
 }
 body{
 	color: #333;
@@ -142,4 +142,25 @@ a:not([href]){
 }
 .space{
 	padding: 0 15px;
+}
+
+.color-red{
+	color: #e91e45;
+}
+.color-green{
+	color: #38b13d;
+}
+.color-yellow{
+	color: #dbd41b;
+}
+.color-orange{
+	color: #f96714;
+}
+.no-padding{
+	padding-top: 0!important;
+	padding-bottom: 0!important;
+}
+code pre{
+	padding-top: 0!important;
+	padding-bottom: 0!important;
 }
