@@ -9,12 +9,9 @@
  * Do Not Edit Or Remove Any Code In This page
  *
  * Make Sure To Setup The Server Connection First
- * The Setup Go To : application/config/database.php
+ * The Setup File In: application/config/app.php
  *
  * Version 1.0
- *
- *---------------------------------------------------------------
- * Include Config & Autoload
  *
  */
 
@@ -43,7 +40,10 @@ endif;
 
 
 
-
+/*
+ *---------------------------------------------------------------
+ * Include Config & Autoload
+ */
 
 require_once 'application'.DS.'core'.DS.'config.php';
 require_once CORE.DS.'autoload.php';
