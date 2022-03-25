@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/lib/fontawesome/all.css">
     <!-- @stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/font/Cairo.ttf">
 	<link rel="stylesheet" href="assets/lib/highlighter/monakai.css">
     <script src="assets/lib/jquery/jquery.min.js"></script>
     <script src="assets/lib/bootstrap/bootstrap.bundle.min.js"></script>
@@ -38,6 +39,7 @@
 				<a href="#database"> قاعدة البيانات</a>
 				<a href="#functions"> الدوال الجاهزة</a>
 				<a href="#classes"> الكلاسات والإضافات</a>
+				<a href="#routing"> نظام التوجيه</a>
 				<a href="#security"> الحماية</a>
 				<a href="#conclusion"> خاتمة</a>
 			</div>
@@ -93,15 +95,7 @@
 					<li>ادخل الى المسار التالي <a>/application/config/database.php</a> ثم قم بإعداد معلومات الاتصال بقاعدة البيانات الخاصة بك</li>
 					<div class="code">
 						<pre>
-							<code data-language="php">/*
-								 *---------------------------------------------------------------
-								 * Database Connection
-								 *---------------------------------------------------------------
-								 *
-								 * Do Not Edit Or Remove Any Key, You Can Edit Only The Values
-								 *
-								 */
-								
+							<code data-language="php">		
 								$database['hostname'] = 'اسم المظيف';     
 								$database['username'] = 'اسم المستخدم';   
 								$database['password'] = 'كلمة المرور'; 
@@ -132,24 +126,17 @@
 						كل كنترولر يجب ان يحتوي افتراضيا على دالة اسمها <a>()default</a> بحيث يتم تنفيدها تلقائيا اذا لم يتم طلب اي دالة, مثال: <a>http://site.com/blog</a>
 					</li>
 					<li>هذه تعتبر الطريقة الافتراضية التي يقوم من خلالها الموجه اوتوماتيكيا باستدعاء الكنترولر والدالة المناسبين استنادا الى عملية تقسيم الرابط</li>
-				    <li> إلا أنه يمكنك استعمال توجيهات خاصة بك والتحكم في العملية من خلال ملف routes الموجود على المسار <a>application/config/routes.php</a></li>
+				    <li>لكن ماذا لو أردت عمل توجيهات خاصة بي؟ 
+					يتيح لك CodeMediator إمكانية عمل توجيهات مخصصة عوضا عن التوجيه الافتراضي من خلال المولف الموجود على المسار <a>application/config/routes.php</a>. فمثلا يمكنك إعادة توجيه رابط معين إلى رابط آخر, أو توجيه action إلى action مختلفة, إلخ <br> لاحظ المثال التالي</li>
 				    <div class="code">
 						 <pre>
 							 <code data-language="php">
-								/*
-								 *---------------------------------------------------------------
-								 * Custom Routes
-								 *---------------------------------------------------------------
-								 *
-								 * Re-map requests and target specific controllers
-								 *
-								 */
-								
-								$route['blog'] = 'testController';
+								$route['blog'] = 'pageController'; // remap /blog to /page
 							 </code>
 						 </pre>
 					</div>
-					<li>في الكود أعلاه قمنا بتوجيه الطلب <a>site.com/blog</a> الى الكنترولر testController بدل ان يتم توجيهه افتراضيا الى blogController</li>
+					<li>في الكود أعلاه قمنا بتوجيه الطلب <a>site.com/blog</a> الى الكنترولر pageController بدل ان يتم توجيهه افتراضيا الى blogController</li>
+					<li>هذا ليس كل شيء, يمكنك معرفة المزيد عن نظام التوجيه من خلال القسم التالي <a href='#routing'>Routing</a></li>
 				    <h5 class="highlight-yellow">انشاء وعرض أول صفحة</h5>
 					<p>افتراضيا عند فتح الإطار ستجد صفحة ترحبية مسبقا, لكن لننشء صفحة نسميها AboutUs</p>
 				    <li>قم بالذهاب الى مجلد الكنترولرز application/acontrollers وأنشئ واحدا جديدا بنفس اسم الصفحة المطلوبة</li>
@@ -660,13 +647,142 @@
 						</pre>
 					</div>
 					<p>نتيجة الmenu ستكون على الشكل التالي باستخدام البوتستراب, يمكنك التحكم في شكلها بالcss </p>
-					<ul class="pagination" style="direction: ltr!important;float:right;">
+					<ul class="pagination" style="direction: ltr!important;display: flex;justify-content: flex-end; margin-top:10px">
 						<li class="page-item"><a class="page-link" href="#">Previous</a></li>
 						<li class="page-item"><a class="page-link" href="#">1</a></li>
 						<li class="page-item"><a class="page-link" href="#">2</a></li>
 						<li class="page-item"><a class="page-link" href="#">3</a></li>
 						<li class="page-item active"><a class="page-link" href="#">Next</a></li>
 					  </ul>
+				</section>
+				<!-- section -->
+				<section class="section" id="routing">
+					<h3 class="title"> نظام توجيه الطلبات </h3>
+					<p>مبدئيا يستعمل codemediator علاقة one-to-one ما بين ال<a>url</a> و <a>controller/action/args</a> بحيث يكون الطلب على النمط التالي <code>example.com/controller/method/args</code> </p>
+					<p> فعندما يطلب المستخدم رابطا ما مثل: <a>http://example.com/user/account/mr-sam</a> يتم تنفيذ الكلاس <code>userController</code> والدالة <code>()account</code> مع تمرير البارامتر <code>mr-sam</code> إلى الدالة</p>
+					<p><span class="color-green"><b> لكن </b></span>قد ترغب بعمل توجيهات خاصة بك عوضا عن الطريقة الافتراضية, كتوجيه طلبات معينة إلى متحكمات ودوال مختلفة, لأجل ذلك يتيح لك CodeMediator إمكانية عمل توجيهات routes مخصصة</p>
+					<h5 class="highlight-yellow">إنشاء توجيهات مخصصة</h5>
+					<li>يتم إنشاء التوجيهات من خلال الملف routes الموجود على المسار <a>application/config/routes</a></li>
+					<li>يتم تعريف التوجيهات باستعمال المصفوفة <code>[]route$</code> حيث في ال <code>key</code> نضع الوجهة الواردة, وفي ال <code>value</code> نضع الوجهة المخصصة </li>
+					<li>في المثال الآتي سنقوم بإعادة توجيه الطلب <a>http://site.com/blog</a> من المتحكم الافتراضي <code>blogController</code> إلى متحكم آخر <code>postController</code></li>
+					<div class="code">
+						<pre class="no-padding">
+							<code data-language="php">
+								$route['blog'] = 'postController';
+							</code>
+						</pre>
+					</div>
+					<li>يمكنك أيضا إعادة توجيه ال<a>actions</a> وال<a>args</a>, لاحظ المثال التالي</li>
+					<div class="code">
+						<pre class="no-padding">
+							<code data-language="php">
+								$route['blog/author/sam'] = 'blogController/admin/adam';
+							</code>
+						</pre>
+					</div>
+					<h5 class="highlight-yellow">الPrefixes</h5>
+					<li>الرمز <code>*</code>يكتب في ال<code>key</code>  يستعمل للدلالة جميع القيم التي تأتي بعد segment معينة في ال<a>URL</a></li>
+					<li>الرمز <code>1$</code> يكتب في ال<code>value</code> يستعمل للدلالة عن ال<code>arg</code> الموجودة في ال<a>URL</a></li>
+					<p><span class="color-orange">ملاحظة:</span> يتم استعمال <code>*</code> فقط إن كان الرابط يحتوي على القيمة المطلوبة, لاحظ الكود التالي </p>
+					الرابط المطلوب: <a>http://example.com/user/profile/sam</a>
+					<div class="code">
+						<pre class="no-padding">
+							<code data-language="php">
+								# Case 1 : Without *
+								$route['user/profile'] = 'userController/admin/adam';
+								# Case 2: With *
+								$route['user/profile/*'] = 'userController/admin/adam';
+							</code>
+						</pre>
+					</div>
+					<li>في الحالة 1 سيتم توجيه جميع المستخدمين إلى المستخدم adam حتى إن لم يحتوي الرابط على أي مستخدم</li>
+					<li>في الحالة 2 سيتم توجيه جميع المستخدمين إلى المستخدم adam لكن فقط إن احتوى الرابط على مستخدم معين</li>
+					<h6 class="color-orange">مثال آخر</h6>
+					<div class="code">
+						<pre class="no-padding">
+							<code data-language="php">
+								# Case 1 : Without *
+								$route['blog/'] = 'blogController/index';
+								# Case 2: With *
+								$route['blog/*'] = 'blogController/show/$1';
+							</code>
+						</pre>
+					</div>
+					<li>في الحالة 1 عند طلب الرابط <a>http://example.com/blog</a> سيتم إظهار الصفحة الرئيسية لعرض المقالات</li>
+					<li>في الحالة 2 عند طلب رابط المقال ك <a>http://example.com/blog/title-of-article</a> سيتم عرض المقال المطلوب</li>
+					<h5 class="highlight-yellow">أمثلة شاملة</h5>
+					نعتبر أن الرابط المطلوب هو <a>https://example.com/user/profile/adam</a>
+					<li>إعادة توجيه المستخدم adam إلى المستخدم sam</li>
+					<div class="code">
+						<pre class="no-padding">
+							<code data-language="php">
+								$route['user/profile/adam'] = 'userController/admin/sam';
+							</code>
+						</pre>
+					</div>
+					<li>  إعادة توجيه جميع المستخدمين إلى مستخدم واحد sam</li>
+					<div class="code">
+						<pre class="no-padding">
+							<code data-language="php">
+								$route['user/profile/*'] = 'userController/admin/sam';
+							</code>
+						</pre>
+					</div>
+					<li>  إعادة توجيه الدالة profile إلى الدالة status مع تمرير الargs</li>
+					<div class="code">
+						<pre class="no-padding">
+							<code data-language="php">
+								$route['user/profile/*'] = 'userController/status/$1';
+							</code>
+						</pre>
+					</div>
+					<li>عرض بروفيل المستخدم بدون إظهر profile في الurl . مثلا <a>http://example.com/user/adam</a></li>
+					<div class="code">
+						<pre class="no-padding">
+							<code data-language="php">
+								$route['user/*'] = 'userController/profile/$1';
+							</code>
+						</pre>
+					</div>
+					<li>إعادة توجيه صفحة author إلى admin</li>
+					<div class="code">
+						<pre class="no-padding">
+							<code data-language="php">
+								$route['user/author'] = 'userController/admin';
+							</code>
+						</pre>
+					</div>
+					<p><b class="color-orange">ملاحظة</b> يقوم نظام التوجيه بقراءة التوجيهات من الأعلى إلى الأسفل</p>
+					<li>مثلا: نفترض أن الرابط المطلوب هو <a>http://example.com/user/profile/khaled</a></li>
+					<li>الحالة الأولى: سيتم توجيه جميع المستخدميع إلى adam باستثناء khaled</li>
+					<div class="code">
+						<pre class="no-padding">
+							<code data-language="php">
+								$route['user/profile/khaled'] = 'userController/profile/$1';
+								$route['user/profile/*'] = 'userController/profile/adam';
+							</code>
+						</pre>
+					</div>
+					<li>الحالة الأولى: سيتم توجيه جميع المستخدمين إلى adam بمن فيهم khaled, لأن العلامة <code>*</code> جاءت قبل <code>khaled</code></li>
+					<div class="code">
+						<pre class="no-padding">
+							<code data-language="php">
+								$route['user/profile/*'] = 'userController/profile/adam';
+								$route['user/profile/khaled'] = 'userController/profile/$1';	
+							</code>
+						</pre>
+					</div>
+					
+
+
+
+
+
+
+
+
+
+
 				</section>
 				<!-- section -->
 				<section class="section" id="security">
@@ -724,7 +840,7 @@
 				<!-- section -->
 				<section class="section" id="conclusion">
 					<h3 class="title">خاتمة</h3>
-					<p>كانت هذه وثيقة تعريفية بأهم أساسيات إطار العمل CodeMediator الاصدار الأول لعام 2021 , وسيتم إصدار نسح أخرى بإضافات وتحسينات جديدة , يمكنك دائما التواصل مع مطور الإطار سواء عبر الفايسيوك <a href="http://fb.com/rochdi.wafik">@rochdi.wafik</a> أو عبر البريد الإلكتروني <a href="mailto:rochdiouafiq@gmail.com">rochdiouafiq@gmail.com</a> سواء للاستفسار عن مشكلة أو لاقتراح اضافات جديدة</p>
+					<p>كانت هذه وثيقة تعريفية بأهم أساسيات إطار العمل CodeMediator الاصدار الأول لعام 2021 , وسيتم إصدار نسح أخرى بإضافات وتحسينات جديدة . يمككنك التواصل معنا في أي وقت عبر صفحة الفايسبوك <a href="http://fb.com/codemediator">fb.com/codemediator</a> أو يمكنك التواصل مع مطور الإطار عبر الرابط <a href="http://fb.com/rochdi.wafik">fb.com/rochdi.wafik</a></p>
 					<p>إن <a>CodeMediator</a> هو إطار عمل مجاني مفتوح المصدر, ويحتفظ المطور بجميع الحقوق القانونية في حالة استعمال الإطار خارج بنود وشروط الاستعمال</p>
 				    <h5 class="final-title">ماذا تنتظر؟! ابدأ ببناء تطبيقك الآن :)</h5>
 				</section>
