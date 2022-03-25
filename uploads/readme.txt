@@ -1,2 +1,3 @@
-This is the folder where you can upload your files
-You can get the link of the folder by using method uploads()
+This is the folder where to upoad your files
+use function uploads() to get the link
+use Constant UPLOADS to get the path
